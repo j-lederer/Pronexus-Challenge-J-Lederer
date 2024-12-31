@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expert Ranking Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Expert Ranking Tool</h1>
+    <form method="POST" action="/rank">
+        <textarea name="job_description" placeholder="Enter Job Description"></textarea>
+        <button type="submit">Generate Top Leads</button>
+    </form>
+    
+    <div class="results">
+        <div class="column">
+            <h2>Custom Algorithm</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Relevance</th>
+                </tr>
+                {% for expert1, expert2 in data %}
+                <tr>
+                    <td>{{ expert1['name'] }}</td>
+                    <td>{{ expert1['score'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="column">
+            <h2>OpenAI Results</h2>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Relevance</th>
+                </tr>
+                {% for expert1, expert2 in data %}
+                <tr>
+                    <td>{{ expert2['name'] }}</td>
+                    <td>{{ expert2['score'] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <a href="/data">View All Scraped Data</a>
+</body>
+</html>

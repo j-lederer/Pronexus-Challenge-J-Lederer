@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
-from utils.rank_experts import rank_experts_custom
+from dotenv import load_dotenv
+from utils.my_rank import rank_experts_custom
 from utils.openai_rank import rank_experts_openai
 
 app = Flask(__name__)
@@ -25,4 +26,4 @@ def show_data():
     return render_template('data.html', data=data.to_dict(orient='records'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=10000)

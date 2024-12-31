@@ -1,0 +1,145 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*$py.class
+
+# Cython debug symbols
+*.so
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv/
+env.bak/
+*.env
+*.venv
+
+# dotenv environment variable files
+.env
+.env.local
+.env.*.local
+*.env
+
+# Flask-specific files
+instance/
+*.sqlite3
+*.db
+*.bak
+*.log
+
+# Flask cache and sessions
+.cache/
+__pycache__/
+
+# Pytest and test-related files
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+*.cover
+*.hypothesis/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pylint
+pylint-report.txt
+pylint.log
+
+# Logs and runtime data
+logs/
+*.log
+*.out
+*.pid
+*.seed
+*.state
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Local development files
+*.local
+*.lock
+
+# VSCode settings
+.vscode/
+*.code-workspace
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDEs and Editors
+.idea/
+*.iml
+*.swp
+*.swo
+*.swn
+
+# Node and frontend (if applicable)
+node_modules/
+dist/
+build/
+.npm/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Git-specific
+*.orig
+*.rej
+*.bak
+*.swp
+*.swo
+
+# Docker
+docker-compose.override.yml
+*.dockerignore
+
+# Data and Backup
+*.csv
+*.tsv
+*.bak
+*.zip
+
+# Security
+*.pem
+*.key
+*.crt
+*.pfx
+
+# Other
+*.tmp
+*.temp
+*.pid
+*.log
+*.mdmp
+*.dmp
+
+# Ignore uploads
+uploads/
+
+# Ignore generated documentation
+docs/_build/
+site/
+
+# Python packages
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Editor temp files
+*~ 
+*.swp 
+*.swo
