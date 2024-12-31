@@ -2,6 +2,7 @@
 Web:
 https://pronexus-challenge-j-lederer.onrender.com
 
+There is a slight bug. Sometimes when you preccs Generate Top Leads, the OpenAi table doesn't populate. If you attempt it a few more times it will work. Most of the time, it properly populates.
 
 Local:
 Installation and Setup
