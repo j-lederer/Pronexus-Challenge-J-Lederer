@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expert Ranking Tool</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <h1>Expert Ranking Tool</h1>
+    
+
     <form method="POST" action="/rank">
-        <textarea name="job_description" placeholder="Enter Job Description"></textarea>
+        <textarea name="job_description" placeholder="Enter Job Description" required>{{ job_description if job_description else '' }}</textarea>
         <button type="submit">Generate Top Leads</button>
     </form>
+
+    <a href="/data">View All Data</a>
     
+    {% if job_description %}
+        <h2>Results for: "{{ job_description }}"</h2>
+    {% endif %}
+
     <div class="results">
         <div class="column">
             <h2>Custom Algorithm</h2>
@@ -20,32 +28,35 @@
                 <tr>
                     <th>Name</th>
                     <th>Relevance</th>
+                    <th>Explanation</th>
                 </tr>
-                {% for expert1, expert2 in data %}
+                {% for expert in custom %}
                 <tr>
-                    <td>{{ expert1['name'] }}</td>
-                    <td>{{ expert1['score'] }}</td>
+                    <td>{{ expert['name'] }}</td>
+                    <td>{{ expert['score'] }}</td>
+                    <td>{{ expert['explanation'] }}</td> 
                 </tr>
                 {% endfor %}
             </table>
         </div>
+
         <div class="column">
             <h2>OpenAI Results</h2>
             <table>
                 <tr>
                     <th>Name</th>
                     <th>Relevance</th>
+                    <th>Explanation</th>
                 </tr>
-                {% for expert1, expert2 in data %}
+                {% for expert in openai %}
                 <tr>
-                    <td>{{ expert2['name'] }}</td>
-                    <td>{{ expert2['score'] }}</td>
+                    <td>{{ expert['name'] }}</td>
+                    <td>{{ expert['relevance'] }}</td>
+                    <td>{{ expert['explanation'] }}</td> 
                 </tr>
                 {% endfor %}
             </table>
         </div>
     </div>
-
-    <a href="/data">View All Scraped Data</a>
 </body>
 </html>
