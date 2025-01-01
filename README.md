@@ -7,23 +7,23 @@ There is a slight bug. Sometimes when you press Generate Top Leads, the OpenAI t
 Local:
 Installation and Setup
 
-1. Clone the Repository
+1. Clone the Repository:
 git clone https://github.com/j-lederer/Pronexus-Challenge-J-Lederer.git
 cd Pronexus-Challenge-J-Lederer
 
-2. Set Up Virtual Environment
+2. Set Up Virtual Environment:
 python -m venv venv  
 source venv/bin/activate  
 
-3. Install Required Packages
+3. Install Required Packages:
 pip install -r requirements.txt  
 
-4. Set Up Environment Variables
+4. Set Up Environment Variables:
 
 Create a .env file in the root directory and add OpenAI API key:
 OPENAI_API_KEY=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
 
-5. Run the Application
+5. Run the Application:
 flask run  
 
 
