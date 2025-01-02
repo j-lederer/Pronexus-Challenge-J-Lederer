@@ -12,10 +12,16 @@
 
     <form method="POST" action="/rank">
         <textarea name="job_description" placeholder="Enter Job Description" required>{{ job_description if job_description else '' }}</textarea>
+        <label for="data_source">Select Data Source:</label>
+        <select name="data_source">
+            <option value="synthetic">Synthetic Data</option>
+            <option value="scraped">Scraped Data</option>
+        </select>
         <button type="submit">Generate Top Leads</button>
     </form>
 
-    <a href="/data">View All Data</a>
+    <a href="/data">View Synthetic Data</a>
+    <a href="/data2">View Scraped Data</a>
     
     {% if job_description %}
         <h2>Results for: "{{ job_description }}"</h2>

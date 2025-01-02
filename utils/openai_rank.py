@@ -8,6 +8,10 @@ def rank_experts_openai(data, job_description):
     if isinstance(data, list):
         data = pd.DataFrame(data)
 
+    if data.empty:
+        print("Data is empty. No experts to rank.")
+        return []
+
     ranking_prompt = "Rate the following experts for this job: " + job_description + "\n\n"
 
     for i, row in data.iterrows():
@@ -49,15 +53,19 @@ def rank_experts_openai(data, job_description):
     ranked_experts = []
     for i, score in scores:
         idx = int(i) - 1
-        explanation = next((exp[1] for exp in explanations if exp[0] == i), "No explanation available.")
 
-        ranked_experts.append({
-            'name': data.iloc[idx]['name'],
-            'relevance': float(score),
-            'description': data.iloc[idx]['description'],
-            'skills': data.iloc[idx]['skills'],
-            'industry': data.iloc[idx]['industry'],
-            'explanation': explanation  # Add explanation to result
-        })
+        if idx < len(data):
+            explanation = next((exp[1] for exp in explanations if exp[0] == i), "No explanation available.")
+            
+            ranked_experts.append({
+                'name': data.iloc[idx]['name'],
+                'relevance': float(score),
+                'description': data.iloc[idx]['description'],
+                'skills': data.iloc[idx]['skills'],
+                'industry': data.iloc[idx]['industry'],
+                'explanation': explanation 
+            })
+        else:
+            print(f"Skipping index {idx}. Out of bounds (DataFrame length: {len(data)}).")
 
     return sorted(ranked_experts, key=lambda x: x['relevance'], reverse=True)

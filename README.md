@@ -21,7 +21,7 @@ pip install -r requirements.txt
 4. Set Up Environment Variables:
 
 Create a .env file in the root directory and add OpenAI API key:
-OPENAI_API_KEY=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
+OPENAI_API_KEY= The key I provided.
 
 5. Run the Application:
 flask run  
@@ -31,12 +31,15 @@ Thesis:
 Approach Overview
 
 The solution is structured around a dual-ranking system that utilizes:
-	1.	A Custom Machine Learning Model – This model analyzes job descriptions and candidate profiles, computing relevance through text embeddings, cosine similarity, and fuzzy matching.
+	1.	A Custom Machine Learning Model – This model analyzes job descriptions and candidate profiles, computing relevance through text embeddings, cosine similarity, and fuzzy matching. The main focus is on the similarity between the job description and the candidates profile in terms of meaning and text similarity. Keywords, the candidate's indistry, and experiance are also accounted for.
 	2.	OpenAI’s GPT Model – GPT provides additional ranking and explanatory text, offering context for each candidate’s position.
 
 Data Retrieval and Processing
 
-Candidate data is ingested in CSV format, including key fields: Name, Skills, Industry, Description. This data is pre-processed to standardize text, remove stop words, and extract essential information. The job description provided by the recruiter is processed similarly to ensure consistency.
+
+I obtained a list of 843 candidates using Phantombuser's Linkedin Export Search and Linkedin Profile Scraper. It searches Linkedin for "Open to work" and then runs another automation to scrape the users' profile data. Regular scraping of Linkedin profiles violates Linkedin's terms of service so this was the best option. Unfortunately the free trial only allowed me to download 10 profiles.
+
+Candidate data is downloaded and ingested in CSV format the received fields are distilled into the following columns: Name, Skills, Industry, Description. This data is pre-processed to standardize text, remove stop words, and extract essential information. The job description provided by the recruiter is processed similarly to ensure consistency.
 
 Key Steps in Data Processing:
 	•	Embedding Generation: The sentence-transformers model converts job descriptions and candidate profiles into vector embeddings. This enables the system to compute similarity scores by measuring how closely two embeddings align.
