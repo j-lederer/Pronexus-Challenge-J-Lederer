@@ -106,11 +106,6 @@ yarn-error.log*
 docker-compose.override.yml
 *.dockerignore
 
-# Data and Backup
-*.csv
-*.tsv
-*.bak
-*.zip
 
 # Security
 *.pem
